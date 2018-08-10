@@ -165,10 +165,8 @@ public class PageDocProcessor extends AbstractProcessor {
             TemplateUtils.getInstance().init(mTemplatePath);
             Map<String, Object> params = new HashMap<>(1);
             params.put("moduleName", mModuleName);
-            TemplateUtils.getInstance()
-                    .writeTemplate(new FileWriter(mOutPutHtmlPath + String.format(Locale.CHINA, DOC_NAME_FORMAT_HTML, mModuleName)),
-                            mPageServiceMetaList,
-                            params);
+            File outFile = new File(mOutPutHtmlPath,String.format(Locale.CHINA, DOC_NAME_FORMAT_HTML, mModuleName));
+            TemplateUtils.getInstance().writeTemplate(new FileWriter(outFile),mPageServiceMetaList, params);
         } catch (Exception e) {
             mLogger.error("Create doc writer failed, because " + e.getMessage());
         }
