@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>模块：${moduleName} 路由映射表</title>
+    <style type="text/css">
+      th {
+        color:red;
+        align:center;
+        background:blue;
+      }
+      #index {
+        background:green;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <center><h1>模块：${moduleName} 路由映射表</h1></center>
+    <table border="1" align="center">
+      <thead>
+      <tr>
+        <th colspan="7">页面信息</th>
+        <th colspan="6">参数</th>
+      </tr>
+      <tr>
+        <th rowspan="2">序号</th>
+        <th rowspan="2">页面类名</th>
+        <th rowspan="2">页面名称</th>
+        <th rowspan="2">页面路径</th>
+        <th rowspan="2">描述</th>
+        <th rowspan="2">版本</th>
+        <th rowspan="2">页面类型</th>
+        <th rowspan="2">序号</th>
+        <th rowspan="2">参数类型</th>
+        <th rowspan="2">Key值</th>
+        <th rowspan="2">是否必须</th>
+        <th rowspan="2">参数描述</th>
+        <th rowspan="2">参数版本</th>
+      </tr>
+      </thead>
+      <tbody>
+        <#list pages as page>
+          <tr>
+            <td id="index" rowspan="${page.params?size + 1}">${page_index + 1}</td>
+            <td rowspan="${page.params?size + 1}">${page.clazzName}</td>
+            <td rowspan="${page.params?size + 1}">${page.name}</td>
+            <td rowspan="${page.params?size + 1}">${page.path}</td>
+            <td rowspan="${page.params?size + 1}">${page.desc}</td>
+            <td rowspan="${page.params?size + 1}">${page.version}</td>
+            <td rowspan="${page.params?size + 1}">${page.type}</td>
+            <#if page.params?size == 0>
+              <td colspan="6" align="center">无参数</td>
+            </#if>
+          </tr>
+          <#list page.params as param>
+            <tr>
+              <td id="index">${param_index + 1}</td>
+              <td>${param.clazzName}</td>
+              <td>${param.name}</td>
+              <td>${param.required?string}</td>
+              <td>${param.desc}</td>
+              <td>${param.version}</td>
+            </tr>
+          </#list>
+        </#list>
+      </tbody>
+    </table>
+  </body>
+</html>

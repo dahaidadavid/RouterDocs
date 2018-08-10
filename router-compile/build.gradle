@@ -1,0 +1,35 @@
+apply plugin: 'java-library'
+
+sourceSets {
+    main {
+        java {
+            srcDirs= ["src/main/java"]
+        }
+        resources {
+            srcDirs= ["src/main/resources"]
+        }
+    }
+}
+
+dependencies {
+    compile 'com.google.auto.service:auto-service:1.0-rc4'
+    compile 'com.squareup:javapoet:1.9.0'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile 'org.apache.commons:commons-collections4:4.1'
+    compile 'commons-io:commons-io:2.6'
+    compile 'org.freemarker:freemarker:2.3.14'
+    compile 'log4j:log4j:1.2.17'
+    implementation "com.dave.router:router-annotation:1.0.0"
+    implementation 'com.alibaba:fastjson:1.2.48'
+}
+
+apply plugin: 'maven'
+group = 'com.dave.router'
+version = '1.0.0'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('/Users/davidren/maven/repo'))
+        }
+    }
+}
